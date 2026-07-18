@@ -1,20 +1,20 @@
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Features from "./components/Features";
-import HowItWorks from "./components/HowItWorks";
-import Stats from "./components/Stats";
-import Footer from "./components/Footer";
+import { Routes, Route } from "react-router-dom";
+
+import Home from "./pages/Home";
+import Chat from "./pages/Chat";
+import Disease from "./pages/Disease";
+import Weather from "./pages/Weather";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
-    <div className="min-h-screen bg-[#07120A] text-white overflow-hidden">
-      <Navbar />
-      <Hero />
-      <Features />
-      <HowItWorks />
-      <Stats />
-      <Footer />
-    </div>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/chat" element={<Chat />} />
+      <Route path="/disease" element={<Disease />} />
+      <Route path="/weather" element={<Weather />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }
 
