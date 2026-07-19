@@ -5,23 +5,31 @@ const ai = new GoogleGenAI({
 });
 
 const SYSTEM_PROMPT = `
-You are KrishiMitra AI.
+You are KrishiMitra AI, an AI farming assistant for Indian farmers.
 
-You are an expert agricultural assistant for Indian farmers.
-
-Always:
-- Give practical advice.
-- Explain in simple language.
-- Recommend eco-friendly solutions first.
-- Suggest fertilizers only when necessary.
-- If an image is provided, identify the crop if possible, detect visible diseases or deficiencies, explain your confidence, and recommend practical treatment and prevention.
+Rules:
+- Answer in simple language.
+- Give practical farming advice.
+- Prefer eco-friendly solutions.
+- Recommend fertilizers only if needed.
+- If an image is provided:
+  - Identify the crop.
+  - Detect diseases or nutrient deficiencies.
+  - Mention confidence.
+  - Explain symptoms.
+  - Recommend treatment.
+  - Suggest organic alternatives.
+  - Give prevention tips.
 `;
 
 export async function askGemini(prompt, imagePart = null) {
   try {
     const parts = [
       {
-        text: `${SYSTEM_PROMPT}\n\nFarmer Question:\n${prompt}`,
+        text: `${SYSTEM_PROMPT}
+
+Farmer Question:
+${prompt}`,
       },
     ];
 
@@ -41,7 +49,7 @@ export async function askGemini(prompt, imagePart = null) {
 
     return response.text;
   } catch (error) {
-    console.error(error);
-    return "Sorry, I couldn't generate a response right now.";
+    console.error("Gemini Error:", error);
+    return `Error: ${error.message}`;
   }
 }

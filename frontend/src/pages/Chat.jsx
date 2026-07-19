@@ -9,9 +9,10 @@ export default function Chat() {
   const [messages, setMessages] = useState([
     {
       role: "assistant",
-      text: "👋 Hello! I'm KrishiMitra AI. Ask me anything about crops, farming, fertilizers, pests, irrigation, or weather.",
+      text: "👋 Hello! I'm KrishiMitra AI. Upload a crop image or ask any farming question.",
     },
   ]);
+
   const [loading, setLoading] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
 
@@ -27,17 +28,20 @@ export default function Chat() {
     setMessages([
       {
         role: "assistant",
-        text: "👋 Hello! I'm KrishiMitra AI. Ask me anything about crops, farming, fertilizers, pests, irrigation, or weather.",
+        text: "👋 Hello! I'm KrishiMitra AI. Upload a crop image or ask any farming question.",
       },
     ]);
+
     setPrompt("");
     setSelectedImage(null);
   }
 
   async function handleSend() {
-    if (!prompt.trim()) return;
+    if (!prompt.trim() && !selectedImage) return;
 
-    const question = prompt;
+    const question =
+      prompt.trim() ||
+      "Analyze this crop image and identify any disease.";
 
     setMessages((prev) => [
       ...prev,
@@ -47,16 +51,17 @@ export default function Chat() {
       },
     ]);
 
-    setPrompt("");
     setLoading(true);
 
     let imagePart = null;
 
     if (selectedImage) {
       const buffer = await selectedImage.arrayBuffer();
+
       const bytes = new Uint8Array(buffer);
 
       let binary = "";
+
       bytes.forEach((b) => {
         binary += String.fromCharCode(b);
       });
@@ -79,25 +84,28 @@ export default function Chat() {
       },
     ]);
 
-    setLoading(false);
+    setPrompt("");
     setSelectedImage(null);
+    setLoading(false);
   }
 
   return (
     <div className="min-h-screen bg-[#07120A] text-white">
-      <div className="mx-auto max-w-4xl px-6 py-10">
+      <div className="mx-auto max-w-5xl px-6 py-10">
 
         <div className="mb-8 flex items-center justify-between">
+
           <h1 className="text-4xl font-bold">
             🌾 KrishiMitra AI
           </h1>
 
           <button
             onClick={handleNewChat}
-            className="rounded-xl bg-red-500 px-5 py-2 font-semibold transition hover:bg-red-600"
+            className="rounded-xl bg-red-500 px-5 py-2 font-semibold hover:bg-red-600"
           >
             New Chat
           </button>
+
         </div>
 
         <SuggestedQuestions
@@ -121,11 +129,11 @@ export default function Chat() {
           {loading && (
             <ChatMessage
               role="assistant"
-              text="🌱 Thinking..."
+              text="🌱 Analyzing..."
             />
           )}
 
-          <div ref={chatEndRef}></div>
+          <div ref={chatEndRef} />
 
         </div>
 
@@ -139,14 +147,14 @@ export default function Chat() {
                 handleSend();
               }
             }}
-            placeholder="Ask about crops or upload a leaf image..."
+            placeholder="Ask about crops or upload an image..."
             className="flex-1 rounded-xl border border-white/10 bg-white/10 px-5 py-4 outline-none focus:border-green-500"
           />
 
           <button
             onClick={handleSend}
             disabled={loading}
-            className="rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 px-8 font-semibold transition hover:scale-105 disabled:opacity-50"
+            className="rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 px-8 font-semibold hover:scale-105 disabled:opacity-50"
           >
             Send
           </button>
