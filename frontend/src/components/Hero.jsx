@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import AIDashboard from "./AIDashboard";
 
 export default function Hero() {
@@ -23,41 +24,34 @@ export default function Hero() {
           </span>
 
           <h1 className="mt-8 text-6xl font-black leading-tight">
-
             Grow Better
             <br />
-
             Crops with
-
-            <span className="text-green-400">
-              {" "}AI
-            </span>
-
+            <span className="text-green-400"> AI</span>
           </h1>
 
           <p className="mt-8 max-w-xl text-lg leading-8 text-slate-400">
-
             KrishiMitra AI helps farmers detect crop diseases,
             analyze images,
             and receive intelligent farming recommendations.
-
           </p>
 
-          <div className="mt-10 flex gap-4 flex-wrap">
+          <div className="mt-10 flex flex-wrap gap-4">
 
-            <button className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 px-8 py-4 font-semibold hover:scale-105 transition">
-
+            <Link
+              to="/chat"
+              className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 px-8 py-4 font-semibold transition hover:scale-105"
+            >
               Analyze Crop
-
               <ArrowRight size={18} />
+            </Link>
 
-            </button>
-
-            <button className="rounded-xl border border-white/10 bg-white/5 px-8 py-4 backdrop-blur-xl hover:bg-white/10 transition">
-
+            <Link
+              to="/chat"
+              className="rounded-xl border border-white/10 bg-white/5 px-8 py-4 backdrop-blur-xl transition hover:bg-white/10"
+            >
               Talk with AI
-
-            </button>
+            </Link>
 
           </div>
 
@@ -68,9 +62,7 @@ export default function Hero() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.9 }}
         >
-
           <AIDashboard />
-
         </motion.div>
 
       </div>
