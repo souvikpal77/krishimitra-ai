@@ -6,18 +6,29 @@ import ChatMessage from "../components/ChatMessage";
 import SuggestedQuestions from "../components/SuggestedQuestions";
 import ImageUploader from "../components/ImageUploader";
 import WeatherCard from "../components/WeatherCard";
+import VoiceButton from "../components/VoiceButton";
 
 export default function Chat() {
   const [prompt, setPrompt] = useState("");
 
+  const [listening, setListening] = useState(false);
+
   const [weather, setWeather] = useState(null);
 
-  const [messages, setMessages] = useState([
+ const [messages, setMessages] = useState(() => {
+  const saved = localStorage.getItem("krishimitra-chat");
+
+  if (saved) {
+    return JSON.parse(saved);
+  }
+
+  return [
     {
       role: "assistant",
       text: "👋 Hello! I'm KrishiMitra AI. Upload a crop image or ask any farming question.",
     },
-  ]);
+  ];
+});
 
   const [loading, setLoading] = useState(false);
 
@@ -30,6 +41,10 @@ export default function Chat() {
       behavior: "smooth",
     });
   }, [messages, loading]);
+
+  useEffect(() => {
+    localStorage.setItem("krishimitra-chat", JSON.stringify(messages));
+  }, [messages]);
 
   function handleNewChat() {
     setMessages([
@@ -44,7 +59,53 @@ export default function Chat() {
     setSelectedImage(null);
 
     setWeather(null);
+
+    localStorage.removeItem("krishimitra-chat");
   }
+
+function handleVoiceInput() {
+  console.log("Voice button clicked");
+
+  const SpeechRecognition =
+    window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  if (!SpeechRecognition) {
+    alert("Speech Recognition is not supported.");
+    return;
+  }
+
+  const recognition = new SpeechRecognition();
+
+  recognition.lang = "en-IN";
+  recognition.continuous = false;
+  recognition.interimResults = false;
+
+  recognition.onstart = () => {
+    console.log("Listening...");
+    setListening(true);
+  };
+
+  recognition.onresult = (event) => {
+    console.log("Speech detected!");
+
+    const transcript = event.results[0][0].transcript;
+
+    console.log("Transcript:", transcript);
+
+    setPrompt(transcript);
+  };
+
+  recognition.onerror = (event) => {
+    console.log("Speech Error:", event.error);
+  };
+
+  recognition.onend = () => {
+    console.log("Speech ended");
+    setListening(false);
+  };
+
+  recognition.start();
+}
     async function handleGetWeather() {
     if (!navigator.geolocation) {
       alert("Geolocation is not supported.");
@@ -249,27 +310,32 @@ console.log("Gemini reply:", reply);
 
         <div className="flex gap-4">
 
-          <input
-            value={prompt}
-            onChange={(e) => setPrompt(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                handleSend();
-              }
-            }}
-            placeholder="Ask about crops or upload an image..."
-            className="flex-1 rounded-xl border border-white/10 bg-white/10 px-5 py-4 outline-none focus:border-green-500"
-          />
+  <input
+    value={prompt}
+    onChange={(e) => setPrompt(e.target.value)}
+    onKeyDown={(e) => {
+      if (e.key === "Enter") {
+        handleSend();
+      }
+    }}
+    placeholder="Ask about crops or upload an image..."
+    className="flex-1 rounded-xl border border-white/10 bg-white/10 px-5 py-4 outline-none focus:border-green-500"
+  />
 
-          <button
-            onClick={handleSend}
-            disabled={loading}
-            className="rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 px-8 font-semibold transition hover:scale-105 disabled:opacity-50"
-          >
-            Send
-          </button>
+  <VoiceButton
+    listening={listening}
+    onClick={handleVoiceInput}
+  />
 
-        </div>
+  <button
+    onClick={handleSend}
+    disabled={loading}
+    className="rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 px-8 font-semibold transition hover:scale-105 disabled:opacity-50"
+  >
+    Send
+  </button>
+
+</div>
 
       </div>
     </div>
