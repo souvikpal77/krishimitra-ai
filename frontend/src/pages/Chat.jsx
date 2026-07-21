@@ -15,6 +15,10 @@ export default function Chat() {
 
   const [weather, setWeather] = useState(null);
 
+  const [language, setLanguage] = useState(() => {
+  return localStorage.getItem("krishimitra-language") || "English";
+});
+
  const [messages, setMessages] = useState(() => {
   const saved = localStorage.getItem("krishimitra-chat");
 
@@ -45,6 +49,10 @@ export default function Chat() {
   useEffect(() => {
     localStorage.setItem("krishimitra-chat", JSON.stringify(messages));
   }, [messages]);
+
+  useEffect(() => {
+  localStorage.setItem("krishimitra-language", language);
+}, [language]);
 
   function handleNewChat() {
     setMessages([
@@ -126,6 +134,7 @@ function handleVoiceInput() {
             setWeather(data);
 
             const weatherPrompt = `
+            Reply ONLY in ${language}.
 You are KrishiMitra AI.
 
 You are an expert agriculture assistant for Indian farmers.
@@ -198,6 +207,12 @@ console.log("Gemini reply:", reply);
       prompt.trim() ||
       "Analyze this crop image and identify any disease.";
 
+      const finalQuestion = `
+Reply ONLY in ${language}.
+
+${question}
+`;
+
     setMessages((prev) => [
       ...prev,
       {
@@ -229,7 +244,7 @@ console.log("Gemini reply:", reply);
       };
     }
 
-    const reply = await askGemini(question, imagePart);
+    const reply = await askGemini(finalQuestion, imagePart);
 
     setMessages((prev) => [
       ...prev,
@@ -277,6 +292,38 @@ console.log("Gemini reply:", reply);
             🌦 Get My Weather
           </button>
         </div>
+        <div className="mb-6">
+  <label className="mr-3 font-semibold">
+    🌍 Language:
+  </label>
+
+  <select
+  value={language}
+  onChange={(e) => setLanguage(e.target.value)}
+  className="rounded-lg border border-green-500/30 bg-[#1B2A1F] text-white px-4 py-2 outline-none focus:border-green-500"
+>
+  <option
+    value="English"
+    className="bg-[#1B2A1F] text-white"
+  >
+    English
+  </option>
+
+  <option
+    value="Hindi"
+    className="bg-[#1B2A1F] text-white"
+  >
+    Hindi
+  </option>
+
+  <option
+    value="Bengali"
+    className="bg-[#1B2A1F] text-white"
+  >
+    Bengali
+  </option>
+</select>
+</div>
 
         <WeatherCard weather={weather} />
 
