@@ -1,3 +1,4 @@
+import ReactMarkdown from "react-markdown";
 import DiagnosisCard from "./DiagnosisCard";
 
 export default function ChatMessage({ role, text }) {
@@ -25,7 +26,9 @@ export default function ChatMessage({ role, text }) {
         </div>
       ) : (
         <div className="max-w-[80%] rounded-2xl border border-green-500/20 bg-[#13241A] px-5 py-4 text-slate-100 shadow-lg">
-          <p className="whitespace-pre-wrap">{text}</p>
+          <div className="prose prose-invert max-w-none">
+            <ReactMarkdown>{text}</ReactMarkdown>
+          </div>
         </div>
       )}
     </div>
