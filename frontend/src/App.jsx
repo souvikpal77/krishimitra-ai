@@ -5,6 +5,7 @@ import Chat from "./pages/Chat";
 import Disease from "./pages/Disease";
 import Weather from "./pages/Weather";
 import CropRecommendation from "./pages/CropRecommendation";
+import CropCalendar from "./pages/CropCalendar";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 
@@ -31,6 +32,11 @@ function App() {
         path="/crop-recommendation"
         element={<CropRecommendation />}
       />
+
+      <Route
+  path="/crop-calendar"
+  element={<CropCalendar />}
+/>
 
       {/* 404 */}
       <Route path="*" element={<NotFound />} />
