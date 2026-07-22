@@ -1,6 +1,7 @@
 import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { askGemini } from "../services/gemini";
+import cropData from "../data/cropData";
 
 export default function CropRecommendation() {
   const [state, setState] = useState("West Bengal");
@@ -13,47 +14,71 @@ export default function CropRecommendation() {
   async function handleRecommendation() {
     setLoading(true);
 
+    const matched = cropData.find(
+      (item) =>
+        item.state === state &&
+        item.soil === soil &&
+        item.season === season
+    );
+
+    if (!matched) {
+      setResult(
+        "❌ No crop recommendation found for the selected State, Soil Type and Season."
+      );
+      setLoading(false);
+      return;
+    }
+
     const prompt = `
 Reply ONLY in English.
 
-You are an expert agricultural advisor for Indian farmers.
+You are KrishiMitra AI, an expert agricultural assistant.
+
+Recommended crops:
+${matched.crops.join(", ")}
 
 State: ${state}
 Soil Type: ${soil}
 Season: ${season}
 
-Recommend the best crops.
-
-Return ONLY in this format:
+Explain using this EXACT markdown format.
 
 # 🌾 Recommended Crops
 
-- Crop 1
-- Crop 2
-- Crop 3
+- ${matched.crops.join("\n- ")}
 
-# 💧 Water Requirement
+# ✅ Why These Crops?
 
-...
+Explain why these crops are suitable for the selected state, soil and season.
+
+# 💧 Irrigation
+
+Provide practical irrigation advice.
 
 # 🌿 Fertilizer Advice
 
-...
+Prefer organic fertilizers first, then mention chemical fertilizers if needed.
 
 # 📈 Expected Yield
 
-...
+Give a general expected yield.
 
 # ⚠️ Precautions
 
-...
+Mention important precautions for farmers.
 `;
 
-    const reply = await askGemini(prompt);
-
-    setResult(reply);
-
-    setLoading(false);
+    try {
+      const reply = await askGemini(prompt);
+      setResult(reply);
+    } catch (error) {
+      console.error(error);
+      setResult(
+        "❌ Unable to generate recommendation. Please try again later."
+      );
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -68,6 +93,7 @@ Return ONLY in this format:
 
           <div className="grid gap-6 md:grid-cols-3">
 
+            {/* State */}
             <div>
               <label className="mb-2 block font-semibold">
                 🌍 State
@@ -76,15 +102,44 @@ Return ONLY in this format:
               <select
                 value={state}
                 onChange={(e) => setState(e.target.value)}
-                className="w-full rounded-xl border border-green-500/30 bg-[#1B2A1F] px-4 py-3 text-white"
+                className="w-full rounded-xl border border-green-500/30 bg-[#1B2A1F] px-4 py-3 text-white outline-none focus:border-green-500"
               >
                 <option>West Bengal</option>
                 <option>Bihar</option>
+                <option>Jharkhand</option>
                 <option>Odisha</option>
                 <option>Assam</option>
+                <option>Tripura</option>
+                <option>Meghalaya</option>
+                <option>Manipur</option>
+                <option>Mizoram</option>
+                <option>Nagaland</option>
+                <option>Sikkim</option>
+                <option>Arunachal Pradesh</option>
+
+                <option>Punjab</option>
+                <option>Haryana</option>
+                <option>Uttar Pradesh</option>
+                <option>Uttarakhand</option>
+                <option>Himachal Pradesh</option>
+                <option>Jammu and Kashmir</option>
+                <option>Delhi</option>
+                <option>Chandigarh</option>
+
+                <option>Maharashtra</option>
+                <option>Gujarat</option>
+                <option>Rajasthan</option>
+                <option>Goa</option>
+
+                <option>Tamil Nadu</option>
+                <option>Kerala</option>
+                <option>Karnataka</option>
+                <option>Andhra Pradesh</option>
+                <option>Telangana</option>
               </select>
             </div>
 
+            {/* Soil */}
             <div>
               <label className="mb-2 block font-semibold">
                 🌱 Soil Type
@@ -93,15 +148,19 @@ Return ONLY in this format:
               <select
                 value={soil}
                 onChange={(e) => setSoil(e.target.value)}
-                className="w-full rounded-xl border border-green-500/30 bg-[#1B2A1F] px-4 py-3 text-white"
+                className="w-full rounded-xl border border-green-500/30 bg-[#1B2A1F] px-4 py-3 text-white outline-none focus:border-green-500"
               >
                 <option>Alluvial</option>
                 <option>Black</option>
                 <option>Red</option>
                 <option>Clay</option>
+                <option>Loamy</option>
+                <option>Laterite</option>
+                <option>Sandy</option>
               </select>
             </div>
 
+            {/* Season */}
             <div>
               <label className="mb-2 block font-semibold">
                 🌦 Season
@@ -110,7 +169,7 @@ Return ONLY in this format:
               <select
                 value={season}
                 onChange={(e) => setSeason(e.target.value)}
-                className="w-full rounded-xl border border-green-500/30 bg-[#1B2A1F] px-4 py-3 text-white"
+                className="w-full rounded-xl border border-green-500/30 bg-[#1B2A1F] px-4 py-3 text-white outline-none focus:border-green-500"
               >
                 <option>Kharif</option>
                 <option>Rabi</option>
@@ -123,7 +182,7 @@ Return ONLY in this format:
           <button
             onClick={handleRecommendation}
             disabled={loading}
-            className="mt-8 rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 px-8 py-3 font-semibold hover:scale-105 disabled:opacity-50"
+            className="mt-8 rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 px-8 py-3 font-semibold transition hover:scale-105 disabled:opacity-50"
           >
             {loading ? "🤖 Thinking..." : "🤖 Recommend Crops"}
           </button>
@@ -132,6 +191,7 @@ Return ONLY in this format:
 
         {result && (
           <div className="mt-8 rounded-2xl border border-green-500/20 bg-[#13241A] p-8 shadow-xl">
+
             <h2 className="mb-6 text-3xl font-bold text-green-400">
               🌾 AI Recommendation
             </h2>
@@ -139,6 +199,7 @@ Return ONLY in this format:
             <div className="prose prose-invert max-w-none">
               <ReactMarkdown>{result}</ReactMarkdown>
             </div>
+
           </div>
         )}
 
