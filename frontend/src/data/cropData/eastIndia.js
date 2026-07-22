@@ -1,4 +1,7 @@
 const eastIndia = [
+  // =========================
+  // WEST BENGAL
+  // =========================
   {
     state: "West Bengal",
     soil: "Alluvial",
@@ -13,10 +16,50 @@ const eastIndia = [
   },
   {
     state: "West Bengal",
+    soil: "Alluvial",
+    season: "Zaid",
+    crops: ["Watermelon", "Vegetables"],
+  },
+  {
+    state: "West Bengal",
     soil: "Clay",
     season: "Kharif",
     crops: ["Rice"],
   },
+  {
+    state: "West Bengal",
+    soil: "Clay",
+    season: "Rabi",
+    crops: ["Potato", "Mustard"],
+  },
+  {
+    state: "West Bengal",
+    soil: "Loamy",
+    season: "Kharif",
+    crops: ["Rice", "Maize"],
+  },
+  {
+    state: "West Bengal",
+    soil: "Loamy",
+    season: "Rabi",
+    crops: ["Wheat", "Vegetables"],
+  },
+  {
+    state: "West Bengal",
+    soil: "Laterite",
+    season: "Kharif",
+    crops: ["Groundnut", "Millets"],
+  },
+  {
+    state: "West Bengal",
+    soil: "Laterite",
+    season: "Rabi",
+    crops: ["Gram", "Mustard"],
+  },
+
+  // =========================
+  // BIHAR
+  // =========================
   {
     state: "Bihar",
     soil: "Alluvial",
@@ -30,6 +73,40 @@ const eastIndia = [
     crops: ["Wheat", "Gram", "Mustard"],
   },
   {
+    state: "Bihar",
+    soil: "Alluvial",
+    season: "Zaid",
+    crops: ["Watermelon", "Cucumber"],
+  },
+  {
+    state: "Bihar",
+    soil: "Loamy",
+    season: "Kharif",
+    crops: ["Rice", "Pulses"],
+  },
+  {
+    state: "Bihar",
+    soil: "Loamy",
+    season: "Rabi",
+    crops: ["Potato", "Onion"],
+  },
+  {
+    state: "Bihar",
+    soil: "Clay",
+    season: "Kharif",
+    crops: ["Rice"],
+  },
+  {
+    state: "Bihar",
+    soil: "Clay",
+    season: "Rabi",
+    crops: ["Mustard"],
+  },
+
+  // =========================
+  // JHARKHAND
+  // =========================
+  {
     state: "Jharkhand",
     soil: "Red",
     season: "Kharif",
@@ -39,8 +116,30 @@ const eastIndia = [
     state: "Jharkhand",
     soil: "Red",
     season: "Rabi",
-    crops: ["Wheat", "Gram"],
+    crops: ["Gram", "Mustard"],
   },
+  {
+    state: "Jharkhand",
+    soil: "Laterite",
+    season: "Kharif",
+    crops: ["Millets", "Groundnut"],
+  },
+  {
+    state: "Jharkhand",
+    soil: "Laterite",
+    season: "Rabi",
+    crops: ["Pulses"],
+  },
+  {
+    state: "Jharkhand",
+    soil: "Loamy",
+    season: "Kharif",
+    crops: ["Rice", "Vegetables"],
+  },
+
+  // =========================
+  // ODISHA
+  // =========================
   {
     state: "Odisha",
     soil: "Red",
@@ -54,64 +153,28 @@ const eastIndia = [
     crops: ["Pulses", "Sunflower"],
   },
   {
-    state: "Assam",
-    soil: "Alluvial",
-    season: "Kharif",
-    crops: ["Rice", "Tea"],
-  },
-  {
-    state: "Assam",
-    soil: "Alluvial",
-    season: "Rabi",
-    crops: ["Mustard", "Potato"],
-  },
-  {
-    state: "Tripura",
+    state: "Odisha",
     soil: "Laterite",
     season: "Kharif",
-    crops: ["Rice", "Pineapple"],
+    crops: ["Rice", "Turmeric"],
   },
   {
-    state: "Tripura",
+    state: "Odisha",
     soil: "Laterite",
     season: "Rabi",
-    crops: ["Potato", "Vegetables"],
+    crops: ["Mustard", "Vegetables"],
   },
   {
-    state: "Meghalaya",
-    soil: "Laterite",
-    season: "Kharif",
-    crops: ["Rice", "Maize"],
-  },
-  {
-    state: "Manipur",
+    state: "Odisha",
     soil: "Clay",
     season: "Kharif",
     crops: ["Rice"],
   },
   {
-    state: "Mizoram",
-    soil: "Red",
-    season: "Kharif",
-    crops: ["Rice", "Maize"],
-  },
-  {
-    state: "Nagaland",
-    soil: "Red",
-    season: "Kharif",
-    crops: ["Rice", "Millets"],
-  },
-  {
-    state: "Sikkim",
-    soil: "Loamy",
-    season: "Kharif",
-    crops: ["Maize", "Ginger"],
-  },
-  {
-    state: "Arunachal Pradesh",
-    soil: "Loamy",
-    season: "Kharif",
-    crops: ["Rice", "Maize"],
+    state: "Odisha",
+    soil: "Clay",
+    season: "Rabi",
+    crops: ["Green Gram"],
   },
 ];
 

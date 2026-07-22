@@ -150,13 +150,14 @@ Mention important precautions for farmers.
                 onChange={(e) => setSoil(e.target.value)}
                 className="w-full rounded-xl border border-green-500/30 bg-[#1B2A1F] px-4 py-3 text-white outline-none focus:border-green-500"
               >
-                <option>Alluvial</option>
-                <option>Black</option>
-                <option>Red</option>
-                <option>Clay</option>
-                <option>Loamy</option>
-                <option>Laterite</option>
-                <option>Sandy</option>
+                <option value="Alluvial">Alluvial</option>
+                <option value="Black">Black</option>
+                <option value="Red">Red</option>
+                <option value="Clay">Clay</option>
+                <option value="Loamy">Loamy</option>
+                <option value="Laterite">Laterite</option>
+                <option value="Sandy">Sandy</option>
+                <option value="Mountain">Mountain</option>
               </select>
             </div>
 
