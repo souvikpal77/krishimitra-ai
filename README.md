@@ -1,119 +1,128 @@
 # 🌾 KrishiMitra AI
 
-> AI-Powered Smart Farming Assistant built with **Google Gemini AI** to help farmers detect crop diseases, receive personalized farming recommendations, monitor weather, and improve agricultural productivity.
+> **AI-Powered Smart Farming Assistant built with Google Gemini AI**
+
+KrishiMitra AI is an intelligent agricultural assistant designed to help farmers make better decisions using Artificial Intelligence. The platform provides AI-powered crop disease detection, smart crop recommendations, weather insights, crop calendar guidance, multilingual support, and voice-enabled interaction.
 
 ---
 
-## 🚀 Overview
+## 🚀 Live Demo
 
-KrishiMitra AI is an intelligent agricultural assistant designed to empower farmers with AI-driven insights. The application combines Google's Gemini AI with modern web technologies to provide disease diagnosis, crop recommendations, weather analysis, and farming guidance through an easy-to-use interface.
+🔗 **Frontend:** https://YOUR-VERCEL-LINK.vercel.app
 
 ---
 
 ## ✨ Features
 
-### 🤖 AI Chat Assistant
-- Natural language farming assistant
-- Powered by Google Gemini
-- Multilingual support
-- Voice input support
-- Persistent chat history
-
-### 🦠 Disease Detection
-- Upload crop images
-- AI-powered disease identification
-- Organic & chemical treatment suggestions
-- Prevention tips
-- PDF diagnosis report generation
-
-### 🌱 Crop Recommendation
-- State-wise crop recommendations
-- Season-based suggestions
-- Soil-aware recommendations
-- Climate suitability analysis
-
-### 🌤 Weather Dashboard
-- Live weather information
-- Location-based weather
-- City search
-- AI-powered farming advice based on weather
-
-### 📅 Crop Calendar
-- Month-wise farming activities
-- Crop lifecycle guidance
-- Seasonal planning
-
-### 📊 Dashboard
-- Central navigation
-- Quick access to all AI tools
-- Modern responsive interface
+- 🌾 AI Crop Disease Detection using Google Gemini Vision
+- 🤖 AI Farming Chat Assistant
+- 🌦 Live Weather Dashboard with Farming Advice
+- 🌱 Smart Crop Recommendation System
+- 📅 Crop Calendar
+- 🎤 Voice Input Support
+- 🌍 Multilingual Support (English, Hindi, Bengali)
+- 📄 Export AI Diagnosis as PDF
+- 📋 Copy AI Response
+- 📱 Fully Responsive UI
+- ⚡ Built using React + Vite
 
 ---
 
-# 🖼 Screenshots
+# 📸 Screenshots
 
-> Add screenshots here after deployment.
+## 🏠 Home
 
-| Home | Dashboard |
-|------|-----------|
-| Screenshot | Screenshot |
+![Home](screenshots/home.png)
 
-| AI Chat | Disease Detection |
-|---------|------------------|
-| Screenshot | Screenshot |
+---
 
-| Weather | Crop Recommendation |
-|---------|---------------------|
-| Screenshot | Screenshot |
+## 📊 Dashboard
+
+![Dashboard](screenshots/dashboard.png)
+
+---
+
+## 🤖 AI Chat
+
+![Chat](screenshots/chat.png)
+
+---
+
+## 🦠 Disease Detection
+
+![Disease](screenshots/disease.png)
+
+---
+
+## 🌤 Weather Dashboard
+
+![Weather](screenshots/weather.png)
+
+---
+
+## 🌱 Crop Recommendation
+
+![Crop Recommendation](screenshots/crop-recommendation.png)
+
+---
+
+## 📅 Crop Calendar
+
+![Crop Calendar](screenshots/crop-calendar.png)
 
 ---
 
 # 🛠 Tech Stack
 
-## Frontend
+### Frontend
 
-- React
+- React 19
 - Vite
-- JavaScript
 - Tailwind CSS
 - React Router
+- Axios
+- Framer Motion
+- Lucide React
 
-## AI
+### AI
 
-- Google Gemini AI
-- Gemini Vision
+- Google Gemini 3.6 Flash
+- Google GenAI SDK
 
-## APIs
+### APIs
 
 - OpenWeatherMap API
-- Browser Geolocation API
-- Web Speech API
+- Browser Speech Recognition API
 
-## Libraries
+### Libraries
 
-- Axios
 - React Markdown
 - jsPDF
 - Browser Image Compression
-- Lucide React
 
 ---
 
 # 📂 Project Structure
 
 ```text
-frontend/
+krishimitra-ai/
 │
-├── src/
-│   ├── components/
-│   ├── pages/
-│   ├── services/
-│   ├── assets/
-│   └── App.jsx
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── services/
+│   │   ├── assets/
+│   │   └── App.jsx
+│   │
+│   ├── package.json
+│   └── vite.config.js
 │
-├── public/
-├── package.json
-└── vite.config.js
+├── screenshots/
+│
+├── LICENSE
+└── README.md
 ```
 
 ---
@@ -123,10 +132,10 @@ frontend/
 Clone the repository
 
 ```bash
-git clone https://github.com/souvikpal77/krishimitra-ai.git
+git clone https://github.com/YOUR_USERNAME/krishimitra-ai.git
 ```
 
-Move into the project
+Go to the project
 
 ```bash
 cd krishimitra-ai/frontend
@@ -141,17 +150,17 @@ npm install
 Create a `.env` file
 
 ```env
-VITE_GEMINI_API_KEY=YOUR_GEMINI_KEY
-VITE_OPENWEATHER_API_KEY=YOUR_OPENWEATHER_KEY
+VITE_GEMINI_API_KEY=YOUR_GEMINI_API_KEY
+VITE_OPENWEATHER_API_KEY=YOUR_OPENWEATHER_API_KEY
 ```
 
-Run locally
+Start development server
 
 ```bash
 npm run dev
 ```
 
-Build for production
+Build
 
 ```bash
 npm run build
@@ -159,32 +168,65 @@ npm run build
 
 ---
 
-# 🌍 Deployment
+# 🌍 AI Capabilities
 
-The application can be deployed using:
+### Crop Disease Detection
 
-- Vercel
-- Netlify
-- Render
+Upload a crop image to receive
+
+- Disease Identification
+- Confidence Level
+- Symptoms
+- Treatment Suggestions
+- Organic Solutions
+- Prevention Tips
 
 ---
 
-# 💡 Future Improvements
+### AI Chat
 
-- 📈 Farmer Analytics Dashboard
-- 🌾 Fertilizer Recommendation AI
-- 📷 Real-time Camera Disease Detection
-- 🌍 Support for More Regional Languages
-- 📡 IoT Sensor Integration
-- 🛰 Satellite Crop Monitoring
-- 🔔 Smart Crop Alerts
-- 📱 Progressive Web App (PWA)
+Ask questions like
+
+- Which fertilizer should I use?
+- How to prevent leaf blight?
+- Best crop for West Bengal?
+- Organic farming techniques
+
+---
+
+### Weather Intelligence
+
+Provides
+
+- Live Temperature
+- Humidity
+- Wind Speed
+- Weather Conditions
+- AI Farming Advice
+
+---
+
+### Crop Recommendation
+
+Recommends suitable crops based on
+
+- State
+- Season
+- Soil Type
+
+---
+
+### Crop Calendar
+
+View seasonal crop planning guidance.
 
 ---
 
 # 🔒 Disclaimer
 
-The AI-generated recommendations are intended to assist farmers and should not replace professional agricultural consultation. Always consult local agricultural experts or Krishi Vigyan Kendras (KVKs) for critical farming decisions.
+KrishiMitra AI provides AI-generated agricultural recommendations for educational and informational purposes only.
+
+For severe crop diseases or important farming decisions, users should consult their nearest **Krishi Vigyan Kendra (KVK)** or certified Agriculture Officer.
 
 ---
 
@@ -192,25 +234,28 @@ The AI-generated recommendations are intended to assist farmers and should not r
 
 **Souvik Pal**
 
-B.Tech CSE (IoT, Cybersecurity & Blockchain)
-
-Institute of Engineering & Management, Kolkata
-
-📧 Email: souvikpal.dev@gmail.com
-
-🔗 LinkedIn:
-https://www.linkedin.com/in/souvik-pal-182453388
+- 💼 LinkedIn: https://www.linkedin.com/in/souvik-pal-182453388
+- 📧 Email: souvikpal.dev@gmail.com
 
 ---
 
-# ❤️ Built With
+# 🙏 Acknowledgements
 
-- React
 - Google Gemini AI
 - OpenWeatherMap API
-- Tailwind CSS
+- React
 - Vite
+- Tailwind CSS
+- Lucide Icons
 
 ---
 
-## ⭐ If you like this project, consider giving it a Star!
+# 📄 License
+
+This project is licensed under the MIT License.
+
+See the LICENSE file for details.
+
+---
+
+⭐ If you like this project, consider giving it a star on GitHub!
