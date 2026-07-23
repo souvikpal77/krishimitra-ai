@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { askGemini } from "../services/gemini";
-import { getWeather } from "../services/weather";
+import { getWeatherByCoords } from "../services/weather";
 
 import ChatMessage from "../components/ChatMessage";
 import SuggestedQuestions from "../components/SuggestedQuestions";
@@ -125,10 +125,10 @@ function handleVoiceInput() {
         try {
           setLoading(true);
 
-          const data = await getWeather(
-            position.coords.latitude,
-            position.coords.longitude
-          );
+          const data = await getWeatherByCoords(
+  position.coords.latitude,
+  position.coords.longitude
+);
 
           if (data && data.main && data.weather) {
             setWeather(data);

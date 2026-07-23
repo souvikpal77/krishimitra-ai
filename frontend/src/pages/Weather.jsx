@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Search } from "lucide-react";
 
 import WeatherCard from "../components/WeatherCard";
-import { getWeather } from "../services/weather";
+import { getWeatherByCity } from "../services/weather";
 
 export default function Weather() {
   const [city, setCity] = useState("Kolkata");
@@ -14,7 +14,7 @@ export default function Weather() {
     setLoading(true);
     setError("");
 
-    const data = await getWeather(city);
+    const data = await getWeatherByCity(city);
 
     if (!data) {
       setError("Unable to fetch weather data.");

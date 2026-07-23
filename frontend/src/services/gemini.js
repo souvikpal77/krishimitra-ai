@@ -4,10 +4,6 @@ const ai = new GoogleGenAI({
   apiKey: import.meta.env.VITE_GEMINI_API_KEY,
 });
 
-console.log(
-  "Gemini Key:",
-  import.meta.env.VITE_GEMINI_API_KEY?.substring(0, 10)
-);
 
 const SYSTEM_PROMPT = `
 You are KrishiMitra AI, an intelligent agricultural assistant for Indian farmers.
