@@ -5,7 +5,7 @@ export default function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <div className="mx-auto max-w-7xl px-6 pt-5">
-        <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-black/30 backdrop-blur-2xl px-7 py-4">
+        <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-black/30 px-7 py-4 backdrop-blur-2xl">
 
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
@@ -14,7 +14,7 @@ export default function Navbar() {
             </div>
 
             <div>
-              <h1 className="text-xl font-bold">
+              <h1 className="text-xl font-bold text-white">
                 KrishiMitra AI
               </h1>
 
@@ -25,9 +25,12 @@ export default function Navbar() {
           </Link>
 
           {/* Navigation */}
-          <nav className="hidden md:flex items-center gap-7 text-slate-300">
+          <nav className="hidden items-center gap-7 md:flex text-slate-300">
 
-            <Link to="/" className="transition hover:text-green-400">
+            <Link
+              to="/"
+              className="transition hover:text-green-400"
+            >
               Home
             </Link>
 
@@ -43,13 +46,6 @@ export default function Navbar() {
               className="transition hover:text-green-400"
             >
               AI Chat
-            </Link>
-
-            <Link
-              to="/disease"
-              className="transition hover:text-green-400"
-            >
-              Disease
             </Link>
 
             <Link
@@ -73,14 +69,21 @@ export default function Navbar() {
               Calendar
             </Link>
 
+            <Link
+              to="/disease"
+              className="transition hover:text-green-400"
+            >
+              Disease
+            </Link>
+
           </nav>
 
-          {/* Button */}
+          {/* CTA Button */}
           <Link
-            to="/chat"
-            className="rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 px-6 py-3 font-semibold transition hover:scale-105"
+            to="/dashboard"
+            className="rounded-xl bg-gradient-to-r from-green-500 to-emerald-600 px-6 py-3 font-semibold text-white transition hover:scale-105"
           >
-            Get Started
+            Open Dashboard
           </Link>
 
         </div>

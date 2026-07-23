@@ -3,40 +3,56 @@ import { Mail, Heart } from "lucide-react";
 export default function Footer() {
   return (
     <footer className="border-t border-white/10 bg-[#050B07]">
-      <div className="max-w-7xl mx-auto px-6 py-14">
+      <div className="mx-auto max-w-7xl px-6 py-14">
 
         <div className="grid gap-10 md:grid-cols-3">
 
+          {/* Brand */}
           <div>
             <h2 className="text-2xl font-bold">
               <span className="text-green-400">Krishi</span>Mitra AI
             </h2>
 
-            <p className="mt-4 text-slate-400 leading-7">
+            <p className="mt-4 leading-7 text-slate-400">
               AI-powered farming assistant built with Google Gemini to help
-              farmers detect crop diseases and improve agricultural productivity.
+              farmers detect crop diseases, receive crop recommendations,
+              weather insights, and improve agricultural productivity.
             </p>
           </div>
 
+          {/* Quick Links */}
           <div>
-            <h3 className="mb-4 font-semibold text-white">Quick Links</h3>
+            <h3 className="mb-4 font-semibold text-white">
+              Quick Links
+            </h3>
 
             <ul className="space-y-3 text-slate-400">
-              <li>Home</li>
-              <li>Features</li>
-              <li>How It Works</li>
-              <li>Contact</li>
+              <li>🏠 Home</li>
+              <li>📊 Dashboard</li>
+              <li>🤖 AI Chat</li>
+              <li>🌤 Weather</li>
+              <li>🌾 Crop Recommendation</li>
+              <li>🦠 Disease Detection</li>
             </ul>
           </div>
 
+          {/* Contact */}
           <div>
-            <h3 className="mb-4 font-semibold text-white">Contact</h3>
+            <h3 className="mb-4 font-semibold text-white">
+              Contact
+            </h3>
 
-            <div className="flex items-center gap-3 text-slate-400">
+            <a
+              href="mailto:souvikpal.dev@gmail.com"
+              className="flex items-center gap-3 text-slate-400 transition hover:text-green-400"
+            >
               <Mail size={20} />
               <span>souvikpal.dev@gmail.com</span>
-            </div>
+            </a>
 
+            <p className="mt-5 text-slate-500">
+              Made for Indian Farmers 🌾
+            </p>
           </div>
 
         </div>
@@ -50,6 +66,8 @@ export default function Footer() {
             <Heart size={16} className="text-red-500" />
             React + Google Gemini
           </div>
+
+          <p>Version 1.0.0</p>
 
         </div>
 
