@@ -8,7 +8,7 @@ KrishiMitra AI is an intelligent agricultural assistant designed to help farmers
 
 ## 🚀 Live Demo
 
-🔗 **Frontend:** https://YOUR-VERCEL-LINK.vercel.app
+🔗 **Frontend:** https://krishimitra-ai-three.vercel.app/
 
 ---
 
